@@ -1,5 +1,4 @@
 <template>
-    <div>
-        <h1>This is the sign out page.</h1>
-    </div>
+    <h1>Sign out</h1>
+    <hr class="mb-5">
 </template>

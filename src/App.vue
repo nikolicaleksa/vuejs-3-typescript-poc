@@ -1,32 +1,32 @@
 <template>
-    <div id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/sign-up">Sign up</router-link>
-        <router-link to="/sign-in">Sign in</router-link>
-        <router-link to="/sign-out">Sign Out</router-link>
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <router-link to="/" class="nav-link px-2 text-white">
+                        <li>Home</li>
+                    </router-link>
+                </ul>
+
+                <div class="text-end">
+                    <router-link to="/sign-in">
+                        <button type="button" class="btn btn-outline-light me-2">Sign in</button>
+                    </router-link>
+
+                    <router-link to="/sign-up">
+                        <button type="button" class="btn btn-warning">Sign up</button>
+                    </router-link>
+
+                    <router-link to="/sign-out">
+                        <button type="button" class="btn btn-warning">Sign out</button>
+                    </router-link>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="col-lg-8 mx-auto p-3 py-md-5">
+        <main>
+            <router-view />
+        </main>
     </div>
-    <router-view />
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>

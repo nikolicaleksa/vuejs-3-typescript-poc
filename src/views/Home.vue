@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <h1>This is the home page</h1>
-    </div>
+    <h1>Home</h1>
+    <hr class="mb-5">
 </template>
+
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";

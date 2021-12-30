@@ -1,5 +1,4 @@
 <template>
-    <div>
-        <h1>This is the sign in page.</h1>
-    </div>
+    <h1>Sign in</h1>
+    <hr class="mb-5">
 </template>
