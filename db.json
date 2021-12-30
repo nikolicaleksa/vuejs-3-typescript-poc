@@ -1,0 +1,12 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "first_name": "Aleksa",
+            "last_name": "Nikolic",
+            "email": "aleksa.nikolic@devtechgroup.com",
+            "password": "toor",
+            "created_at": "30.12.2021 19:16:00"
+        }
+    ]
+}
