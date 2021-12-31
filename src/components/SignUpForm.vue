@@ -92,7 +92,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { FormError, NewUser } from '@/types'
+import { FormError } from '@/types/FormError'
+import { NewUser } from '@/types/NewUser'
 
 export default defineComponent({
     name: 'SignUpForm',
