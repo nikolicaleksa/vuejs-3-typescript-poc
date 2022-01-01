@@ -11,17 +11,7 @@ const routes: Array<RouteRecordRaw> = [
         path: "/sign-up",
         name: "Sign up",
         component: () => import("../views/SignUp.vue"),
-    },
-    {
-        path: "/sign-in",
-        name: "Sign in",
-        component: () => import("../views/SignIn.vue"),
-    },
-    {
-        path: "/sign-out",
-        name: "Sign out",
-        component: () => import("../views/SignOut.vue"),
-    },
+    }
 ];
 
 const router = createRouter({

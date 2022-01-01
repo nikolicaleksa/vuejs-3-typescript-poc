@@ -9,16 +9,8 @@
                 </ul>
 
                 <div class="text-end">
-                    <router-link to="/sign-in">
-                        <button type="button" class="btn btn-outline-light me-2">Sign in</button>
-                    </router-link>
-
                     <router-link to="/sign-up">
                         <button type="button" class="btn btn-warning">Sign up</button>
-                    </router-link>
-
-                    <router-link to="/sign-out">
-                        <button type="button" class="btn btn-warning">Sign out</button>
                     </router-link>
                 </div>
             </div>
