@@ -13,7 +13,7 @@ import SignUpForm from '@/components/SignUpForm.vue'
 import { FormError } from '@/types/FormError'
 import { NewUser } from "@/types/NewUser"
 import UserValidator from '@/validators/UserValidator'
-import axios from 'axios'
+import { mapActions } from 'vuex'
 
 export default defineComponent({
     name: 'SignUp',
@@ -26,6 +26,9 @@ export default defineComponent({
         }
     },
     methods: {
+        ...mapActions({
+            registerUserAction: 'registerUser'
+        }),
         registerUser (user: NewUser) {
             const userValidator = new UserValidator()
             userValidator.validate(user)
@@ -36,56 +39,13 @@ export default defineComponent({
                 return
             }
 
-            axios({
-                method: 'post',
-                url: 'api/users',
-                headers: {
-                    'content-type': 'application/json',
-                },
-                data: JSON.stringify({...user, createdAt: new Date()})
-            })
+            this.registerUserAction(user)
                 .then(() => {
                     this.$router.push('sign-in')
                 })
-                .catch((err) => {
-                    this.errors.push({
-                        field: 'response',
-                        message: err
-                    })
+                .catch((err: unknown) => {
+                    console.error(err)
                 })
-        },
-        validateUser (user: NewUser) {
-            this.errors = []
-
-            if (user.firstName.length === 0) {
-                this.errors.push({
-                    field: 'firstName',
-                    message: 'First name is required.'
-                })
-            }
-
-            if (user.lastName.length === 0) {
-                this.errors.push({
-                    field: 'lastName',
-                    message: 'Last name is required.'
-                })
-            }
-
-            if (user.email.length === 0) {
-                this.errors.push({
-                    field: 'email',
-                    message: 'Email is required.'
-                })
-            }
-
-            if (user.password.length === 0) {
-                this.errors.push({
-                    field: 'password',
-                    message: 'Password is required.'
-                })
-            }
-
-            return this.errors.length === 0
         }
     }
 })
