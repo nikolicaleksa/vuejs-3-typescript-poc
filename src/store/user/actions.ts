@@ -1,9 +1,8 @@
 import { ActionTree } from 'vuex'
 import { UserState } from '@/types/UserState'
 import { RootState } from '@/types/RootState'
-import { NewUser } from '@/types/NewUser'
 import { Mutations } from '@/store/user/mutations'
-import { User } from '@/types/User'
+import { User, NewUser } from '@/types/User'
 import axios, {AxiosResponse} from 'axios'
 
 export const actions: ActionTree<UserState, RootState> = {

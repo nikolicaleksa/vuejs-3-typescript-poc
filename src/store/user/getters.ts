@@ -1,12 +1,15 @@
 import { GetterTree } from 'vuex'
 import { UserState } from '@/types/UserState'
 import { RootState } from '@/types/RootState'
-import { User } from '@/types/User'
+import { User, UserName } from '@/types/User'
 
 export const getters: GetterTree<UserState, RootState> = {
-    getUserNames (state): string[] {
+    getUserNames (state): UserName[] {
         return state.users.map((user: User) => {
-            return `${user.firstName} ${user.lastName}`
+            return {
+                firstName: user.firstName,
+                lastName: user.lastName
+            }
         })
     }
 }

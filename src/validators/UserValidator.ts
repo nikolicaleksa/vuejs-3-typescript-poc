@@ -1,5 +1,5 @@
 import { AbstractValidator } from '@/validators/AbstractValidator'
-import { NewUser } from '@/types/NewUser'
+import { NewUser } from '@/types/User'
 
 // Here we are saying that our generic type T will actually be a type NewUser
 export default class UserValidator extends AbstractValidator<NewUser> {

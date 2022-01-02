@@ -10,7 +10,7 @@
 <script lang="ts">
 import SignUpForm from '@/components/SignUpForm.vue'
 import { FormError } from '@/types/FormError'
-import { NewUser } from "@/types/NewUser"
+import { NewUser } from "@/types/User"
 import UserValidator from '@/validators/UserValidator'
 import { Vue, Options } from 'vue-class-component'
 import { mapActions } from 'vuex'

@@ -7,7 +7,7 @@
             v-for="(userName, index) in userNames"
             :key="index"
         >
-            {{ userName }}
+            {{ `${userName.firstName} ${userName.lastName}` }}
         </li>
     </ul>
 </template>
@@ -16,6 +16,7 @@
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex'
 import { Vue, Options } from 'vue-class-component'
+import { UserName } from '@/types/User'
 
 @Options({
     name: 'Home',
@@ -28,7 +29,7 @@ import { Vue, Options } from 'vue-class-component'
         })
     },
     computed: {
-        userNames (): string[] {
+        userNames (): UserName[] {
             return this.getUserNames()
         }
     },

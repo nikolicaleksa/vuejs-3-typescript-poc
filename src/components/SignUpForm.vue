@@ -92,7 +92,7 @@
 
 <script lang="ts">
 import { FormError } from '@/types/FormError'
-import { NewUser } from '@/types/NewUser'
+import { NewUser } from '@/types/User'
 import { Vue, Options } from 'vue-class-component'
 import { Prop, Emit } from 'vue-property-decorator'
 
