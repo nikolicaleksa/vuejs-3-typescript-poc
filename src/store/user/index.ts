@@ -10,6 +10,7 @@ const state: UserState = {
 }
 
 export const user: Module<UserState, RootState> = {
+    namespaced: true,
     state,
     getters,
     actions,

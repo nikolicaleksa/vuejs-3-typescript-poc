@@ -91,45 +91,45 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
 import { FormError } from '@/types/FormError'
 import { NewUser } from '@/types/NewUser'
+import { Vue, Options } from 'vue-class-component'
+import { Prop, Emit } from 'vue-property-decorator'
 
-export default defineComponent({
+@Options({
     name: 'SignUpForm',
-    props: {
-        errors: {
-            type: Object as () => FormError[],
-            default: () => {
-                return Object as () => []
-            }
-        }
-    },
-    emits: ['register-user'],
-    data () {
-        return {
-            user: {
-                firstName: '',
-                lastName: '',
-                email: '',
-                password: '',
-            } as NewUser
-        }
-    },
-    methods: {
-        registerUser () {
-            this.$emit('register-user', this.user)
-        },
-        isValid (field: string) {
-            if (this.errors?.length === 0) {
-                return null
-            }
-
-            return this.errors.find((element: FormError) => element.field === field) === undefined
-        },
-        errorMessage (field: string) {
-            return this.errors.find((element: FormError) => element.field === field)?.message
-        }
-    }
+    emits: ['register-user']
 })
+export default class SignUpForm extends Vue {
+    public user = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+    } as NewUser
+
+    @Prop({
+        default: []
+    })
+    errors: FormError[] = []
+
+    @Emit()
+    registerUser (): NewUser {
+        return this.user
+    }
+
+    isValid (field: string): boolean|null {
+        if (this.errors?.length === 0) {
+            return null
+        }
+
+        return this.errors.find((element: FormError) => element.field === field) === undefined
+    }
+
+    errorMessage (field: string): string|null {
+        const formError = this.errors.find((element: FormError) => element.field === field)
+
+        return formError ? formError.message : null
+    }
+}
 </script>

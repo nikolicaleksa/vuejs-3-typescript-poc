@@ -8,45 +8,50 @@
 </template>
 
 <script lang="ts">
-import { defineComponent} from 'vue'
 import SignUpForm from '@/components/SignUpForm.vue'
 import { FormError } from '@/types/FormError'
 import { NewUser } from "@/types/NewUser"
 import UserValidator from '@/validators/UserValidator'
+import { Vue, Options } from 'vue-class-component'
 import { mapActions } from 'vuex'
 
-export default defineComponent({
+@Options({
     name: 'SignUp',
     components: {
         SignUpForm
     },
-    data () {
-        return {
-            errors: [] as FormError[]
-        }
-    },
     methods: {
         ...mapActions({
-            registerUserAction: 'registerUser'
-        }),
-        registerUser (user: NewUser) {
-            const userValidator = new UserValidator()
-            userValidator.validate(user)
-
-            if (!userValidator.isValid()) {
-                this.errors = userValidator.errors
-
-                return
-            }
-
-            this.registerUserAction(user)
-                .then(() => {
-                    this.$router.push('sign-in')
-                })
-                .catch((err: unknown) => {
-                    console.error(err)
-                })
-        }
+            registerUserAction: 'user/registerUser'
+        })
     }
 })
+export default class SignUp extends Vue {
+    errors = [] as FormError[]
+
+    // Since the registerUserAction is defined in the class decorator we need to describe it here in order for TypeScript
+    // to know it's usage. We are using the ! character to assert that this property is not null and not undefined
+    registerUserAction!: (user: NewUser) => Promise<void>
+
+    registerUser (user: NewUser): void {
+        const userValidator = new UserValidator()
+        userValidator.validate(user)
+
+        if (!userValidator.isValid()) {
+            this.errors = userValidator.errors
+
+            return
+        }
+
+        this.registerUserAction(user)
+            .then(() => {
+                this.$router.push({
+                    name: 'home'
+                })
+            })
+            .catch((err: unknown) => {
+                console.error(err)
+            })
+    }
+}
 </script>

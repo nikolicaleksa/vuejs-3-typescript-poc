@@ -1,4 +1,4 @@
-export type FormError = {
+export interface FormError {
     field: string | null,
     message: string
 }

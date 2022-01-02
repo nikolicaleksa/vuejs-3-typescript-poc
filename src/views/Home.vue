@@ -14,17 +14,17 @@
 
 
 <script lang="ts">
-import { defineComponent } from 'vue'
 import { mapActions, mapGetters } from 'vuex'
+import { Vue, Options } from 'vue-class-component'
 
-export default defineComponent ({
+@Options({
     name: 'Home',
     methods: {
         ...mapGetters({
-            getUserNames: 'getUserNames'
+            getUserNames: 'user/getUserNames'
         }),
         ...mapActions({
-            fetchUsers: 'fetchUsers'
+            fetchUsers: 'user/fetchUsers'
         })
     },
     computed: {
@@ -36,4 +36,7 @@ export default defineComponent ({
         this.fetchUsers()
     }
 })
+export default class Home extends Vue {
+
+}
 </script>

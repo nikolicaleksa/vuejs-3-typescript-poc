@@ -29,9 +29,7 @@ export const actions: ActionTree<UserState, RootState> = {
             url: 'api/users',
         })
             .then((users: AxiosResponse<User[]>) => {
-                users.data.forEach((user: User) => {
-                    commit(Mutations.addUser, user)
-                })
+                commit(Mutations.setUsers, users.data)
             })
     }
 }

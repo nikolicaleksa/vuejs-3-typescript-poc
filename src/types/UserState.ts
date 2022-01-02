@@ -1,5 +1,5 @@
 import { User } from '@/types/User'
 
-export type UserState = {
+export interface UserState {
     users: User[]
 }
