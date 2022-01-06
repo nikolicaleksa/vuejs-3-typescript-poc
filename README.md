@@ -6,6 +6,7 @@ Since TypeScript adds some more functionalities to JavaScripts OOP I've decided 
 #### Note: Even though the project uses Vue.js 3 I've decided to use the old Options API for Vue.js instead of the new Composition API in order to keep it as simple as possible because not everyone has experience with it
 
 ## Project setup
+#### Because of `node-sass` package, Node.js version 12 is required.
 ### Install packages
 ```
 npm install
